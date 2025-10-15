@@ -94,7 +94,11 @@ img {
   top: 0;
   z-index: 100;
   backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(
+    90deg,
+    rgba(248, 250, 252, 0.9),
+    rgba(224, 231, 255, 0.85)
+  );
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -138,7 +142,7 @@ img {
 
 .header__menu-link:hover {
   color: var(--color-primary);
-  background: var(--color-subtle);
+  background-color: rgba(79, 70, 229, 0.08);
 }
 
 .header__menu-link--cta {
@@ -200,7 +204,11 @@ img {
   align-items: center;
   gap: clamp(2.5rem, 6vw, 4rem);
   padding: clamp(3rem, 6vw, 4.5rem);
-  background: var(--color-surface);
+  background: linear-gradient(
+    140deg,
+    rgba(79, 70, 229, 0.08),
+    rgba(79, 70, 229, 0.02)
+  );
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   position: relative;
@@ -515,29 +523,27 @@ img {
 }
 
 .resource-card {
-  background: var(--color-surface);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: var(--radius-lg);
-  padding: 2.4rem 2.1rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--radius-md);
+  padding: 2.5rem 2.2rem;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 1rem;
 }
 
 .resource-card--accent {
   background: linear-gradient(
-    150deg,
-    rgba(67, 56, 202, 0.12),
-    rgba(99, 102, 241, 0.28)
+    190deg,
+    rgba(79, 70, 229, 0.15),
+    rgba(15, 23, 42, 0.85)
   );
-  border: none;
-  color: var(--color-text);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .resource-card__title {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.4rem;
 }
 
 .resource-card__text {
@@ -547,12 +553,12 @@ img {
 
 .resource-card--accent .resource-card__text,
 .resource-card--accent span {
-  color: rgba(15, 23, 42, 0.75);
+  color: rgba(248, 250, 252, 0.85);
 }
 
 .resource-card__list {
   margin: 0;
-  padding-left: 1.1rem;
+  padding: 0 0 0 1rem;
   color: var(--color-text-muted);
 }
 
@@ -566,16 +572,14 @@ img {
 }
 
 .resource-card__quotes p {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.4rem;
   font-style: italic;
-  color: var(--color-text);
 }
 
 .resource-card__quotes span {
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
 }
 
 /* CTA */
