@@ -9,9 +9,14 @@
 </head>
 <body>
     <header class="header">
-        <nav class="header__nav">
-            <a href="#" class="header__logo">UniFAQ</a>
-            <ul class="header__menu">
+        <nav class="header__nav" aria-label="Primary">
+            <a href="#" class="header__logo">Uni<span>FAQ</span></a>
+            <button class="header__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Toggle navigation">
+                <span class="header__toggle-line" aria-hidden="true"></span>
+                <span class="header__toggle-line" aria-hidden="true"></span>
+                <span class="header__toggle-line" aria-hidden="true"></span>
+            </button>
+            <ul id="primary-navigation" class="header__menu">
                 <li class="header__menu-item"><a href="#overview" class="header__menu-link">Overview</a></li>
                 <li class="header__menu-item"><a href="#features" class="header__menu-link">Features</a></li>
                 <li class="header__menu-item"><a href="#how-it-works" class="header__menu-link">How It Works</a></li>
@@ -21,7 +26,7 @@
         </nav>
     </header>
 
-    <main class="main">
+    <main id="main-content" class="main" tabindex="-1">
         <section id="overview" class="hero">
             <div class="hero__content">
                 <span class="hero__badge">AI-Powered Student Success</span>
@@ -69,22 +74,22 @@
                 <p class="section-heading__subtitle">UniFAQ blends AI, curated knowledge, and real-time data to deliver personal, human answers at scale.</p>
             </div>
             <div class="features__grid">
-                <article class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-card__icon">⚡</div>
                     <h3 class="feature-card__title">Instant Answers</h3>
                     <p class="feature-card__text">Deflect repetitive questions with AI-powered responses trained on your campus knowledge base.</p>
                 </article>
-                <article class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-card__icon">🌐</div>
                     <h3 class="feature-card__title">24/7, Any Language</h3>
                     <p class="feature-card__text">Support students across time zones in 50+ languages with auto-translated conversations.</p>
                 </article>
-                <article class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-card__icon">📊</div>
                     <h3 class="feature-card__title">Actionable Insights</h3>
                     <p class="feature-card__text">Spot trends, surface knowledge gaps, and measure satisfaction with real-time dashboards.</p>
                 </article>
-                <article class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-card__icon">🔗</div>
                     <h3 class="feature-card__title">Seamless Integrations</h3>
                     <p class="feature-card__text">Connect UniFAQ with your LMS, SIS, CRM, and ticketing tools to automate escalations.</p>
@@ -159,5 +164,54 @@
     <footer class="footer">
         <p class="footer__text">&copy; 2025 UniFAQ. All rights reserved.</p>
     </footer>
+    <script>
+        (function () {
+            const toggle = document.querySelector('.header__toggle');
+            const navigation = document.getElementById('primary-navigation');
+
+            if (!toggle || !navigation) {
+                return;
+            }
+
+            const closeMenu = () => {
+                toggle.setAttribute('aria-expanded', 'false');
+                navigation.classList.remove('header__menu--open');
+            };
+
+            toggle.addEventListener('click', () => {
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!isExpanded));
+                navigation.classList.toggle('header__menu--open', !isExpanded);
+            });
+
+            navigation.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('focus', () => {
+                    toggle.setAttribute('aria-expanded', 'true');
+                    navigation.classList.add('header__menu--open');
+                });
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+                link.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape') {
+                        closeMenu();
+                        toggle.focus();
+                    }
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!navigation.contains(event.target) && event.target !== toggle) {
+                    closeMenu();
+                }
+            });
+
+            document.addEventListener('keyup', (event) => {
+                if (event.key === 'Escape') {
+                    closeMenu();
+                }
+            });
+        }());
+    </script>
 </body>
 </html>
