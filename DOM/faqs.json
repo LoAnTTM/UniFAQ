@@ -13,5 +13,10 @@
     "id": 3,
     "question": "Is UniFAQ open source?",
     "answer": "Yes, the source code is available on GitHub."
+  },
+  {
+    "id": 4,
+    "question": "How can I contribute to UniFAQ?",
+    "answer": "You can contribute by submitting issues and pull requests on GitHub."
   }
 ]

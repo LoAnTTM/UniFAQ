@@ -31,6 +31,19 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
       }
 
+      /* Make the heading a clickable link back to the index page */
+      .home-link {
+        color: inherit;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .home-link:focus-visible {
+        outline: 3px solid rgba(255, 255, 255, 0.95);
+        outline-offset: 4px;
+        border-radius: 6px;
+      }
+
       .subtitle {
         color: rgba(255, 255, 255, 0.9);
         text-align: center;
@@ -127,10 +140,10 @@
   </head>
   <body>
     <div class="container">
-      <h1>UniFAQ</h1>
+      <h1><a class="home-link" href="index.html">UniFAQ</a></h1>
       <p class="subtitle">Find answers to your questions</p>
       <div id="content" class="state">Loading...</div>
     </div>
-    <script src="main.js"></script>
+    <script src="DOM/main.js"></script>
   </body>
 </html>

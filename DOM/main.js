@@ -1,4 +1,4 @@
-const url = "./faqs.json";
+const url = "DOM/faqs.json";
 
 async function loadData() {
   const container = document.getElementById("content");
